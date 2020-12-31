@@ -8,27 +8,27 @@ struct ListNode {
 
 static struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2)
 {
-    struct ListNode dummy;
-    struct ListNode *prev = &dummy;//指针变量
+    struct ListNode dummyhead;
+    struct ListNode *iterate_pointer = &dummyhead;
  
     while (l1 != NULL && l2 != NULL) {
         if (l1->val <= l2->val) {
-           prev->next = l1;
+           iterate_pointer->next = l1;
             l1 = l1->next;
         } else {
-            prev->next = l2;
+            iterate_pointer->next = l2;
             l2 = l2->next;
         }
-        prev = prev->next;
+        iterate_pointer = iterate_pointer->next;
     }
 
     if (l2 != NULL) {
-        prev->next = l2;
+        iterate_pointer->next = l2;
     }else{
-       prev->next = l1;
+       iterate_pointer->next = l1;
     }
 
-    return dummy.next;
+    return dummyhead.next;
 }
 
 int main(int argc, char **argv)

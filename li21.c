@@ -9,23 +9,23 @@ struct ListNode {
 static struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2)
 {
     struct ListNode dummyhead;
-    struct ListNode *iterate_pointer = &dummyhead;
+    struct ListNode *iterator = &dummyhead;
  
     while (l1 != NULL && l2 != NULL) {
         if (l1->val <= l2->val) {
-           iterate_pointer->next = l1;
+           iterator->next = l1;
             l1 = l1->next;
         } else {
-            iterate_pointer->next = l2;
+            iterator->next = l2;
             l2 = l2->next;
         }
-        iterate_pointer = iterate_pointer->next;
+        iterator = iterator->next;
     }
 
     if (l2 != NULL) {
-        iterate_pointer->next = l2;
+        iterator->next = l2;
     }else{
-       iterate_pointer->next = l1;
+       iterator->next = l1;
     }
 
     return dummyhead.next;
